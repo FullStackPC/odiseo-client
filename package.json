@@ -1,0 +1,53 @@
+{
+  "name": "micro-frontend-project",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "webpack serve --config container/webpack.config.js",
+    "build": "webpack --config container/webpack.config.js",
+    "start:container": "webpack serve --config container/webpack.config.js",
+    "start:react": "cd micro-frontends/react-app && webpack serve --config webpack.config.js",
+    "start:angular": "cd micro-frontends/angular-app && webpack serve --config webpack.config.js",
+    "start:all": "concurrently \"npm run start:react\" \"npm run start:angular\" \"npm run start:container\"",
+    "build:container": "webpack --config container/webpack.config.js",
+    "build:react": "cd micro-frontends/react-app && webpack --config webpack.config.js",
+    "build:angular": "cd micro-frontends/angular-app && webpack --config webpack.config.js",
+    "build:all": "npm run build:container && npm run build:react && npm run build:angular",
+    "install:all": "npm install && cd container && npm install && cd ../micro-frontends/react-app && npm install && cd ../angular-app && npm install",
+    "build:shared": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0",
+    "@angular/platform-browser": "^15.2.0",
+    "@angular/platform-browser-dynamic": "^15.2.0",
+    "chalk": "^4.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.2.0",
+    "ts-loader": "^9.5.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.23.3",
+    "@ngtools/webpack": "^15.2.0",
+    "@types/boxen": "^2.1.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-router-dom": "^5.3.3",
+    "babel-loader": "^8.2.3",
+    "boxen": "^8.0.1",
+    "concurrently": "^7.0.0",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~4.9.5",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
