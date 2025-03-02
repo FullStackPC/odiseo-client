@@ -15,7 +15,12 @@
     "build:angular": "cd micro-frontends/angular-app && webpack --config webpack.config.js",
     "build:all": "npm run build:container && npm run build:react && npm run build:angular",
     "install:all": "npm install && cd container && npm install && cd ../micro-frontends/react-app && npm install && cd ../angular-app && npm install",
-    "build:shared": "tsc -p tsconfig.json"
+    "build:shared": "tsc -p tsconfig.json",
+    "prepare": "husky install",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx . --fix",
+    "check-types": "tsc --project tsconfig.json --noEmit && cd container && tsc --noEmit && cd ../micro-frontends/react-app && tsc --noEmit && cd ../angular-app && tsc --noEmit",
+    "validate": "npm run lint && npm run check-types"
   },
   "dependencies": {
     "@angular/common": "^15.2.0",
@@ -38,16 +43,30 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
     "babel-loader": "^8.2.3",
     "boxen": "^8.0.1",
     "concurrently": "^7.0.0",
     "css-loader": "^6.7.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-react": "^7.37.4",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.2",
     "style-loader": "^3.3.1",
     "ts-node": "^10.9.2",
     "typescript": "~4.9.5",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.15.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
