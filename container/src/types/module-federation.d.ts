@@ -6,17 +6,15 @@
  * to recognize dynamically imported modules from remote applications.
  */
 
-// Definición de interfaces para los componentes
+// Interface definitions for React components
 interface ReactAppProps {
   className?: string;
-  // Define las props que acepta el componente React App aquí
-  // Por ejemplo: name?: string; onClick?: () => void;
+  onClick?: () => void;
 }
 
 interface ReactComponentProps {
-  className?: string;
-  // Define las props que acepta el ReactComponent aquí
-  // Por ejemplo: variant?: 'primary' | 'secondary'; data?: unknown;
+  variant?: 'primary' | 'secondary';
+  data?: unknown;
 }
 
 declare module 'reactApp/App' {

@@ -4,13 +4,13 @@
  */
 
 /**
- * Loads the main React application micro-frontend
- * @returns {Promise<any>} The React app component
+ * Load the React micro-frontend application
+ * @returns Promise that resolves to the React application component
  */
-export const loadReactApp = () => import("reactApp/App")
+export const loadReactApp = () => import('reactApp/App');
 
 /**
- * Loads the React component micro-frontend
- * @returns {Promise<any>} The React component
+ * Load an individual React micro-frontend component
+ * @returns Promise that resolves to the React component
  */
-export const loadReactComponent = () => import("reactApp/ReactComponent")
+export const loadReactComponent = () => import('reactApp/ReactComponent');

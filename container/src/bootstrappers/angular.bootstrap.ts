@@ -6,11 +6,11 @@
 
 import 'zone.js';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import type { NgModuleRef } from '@angular/core';
+import type { NgModuleRef, Type } from '@angular/core';
 
-// Define el tipo para el módulo de Angular
+// Type definition for the Angular module
 interface AngularModuleType {
-  AppModule: unknown;
+  AppModule: Type<unknown>;
 }
 
 /**
